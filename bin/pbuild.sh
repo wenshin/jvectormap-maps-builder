@@ -19,8 +19,10 @@ if [ $# -le 2 ]; then
 fi
 
 MAP_TYPE=$1
-COUNTRY_NAME_INDEX=$2
-COUNTRY_CODE_INDEX=$3
+# 指定jvectormap中用于显示的名字
+NAME_INDEX=$2
+# 区分jVectormap 地图数据中的区域key，必须唯一
+CODE_INDEX=$3
 FILTER=$4
 
 rm -rf ../tests/$MAP_TYPE && rm -rf ../maps/$MAP_TYPE
@@ -46,8 +48,8 @@ echo 'Start Convert'
 
 python converter.py \
     --width 900 \
-    --country_name_index $COUNTRY_NAME_INDEX \
-    --country_code_index $COUNTRY_CODE_INDEX \
+    --country_name_index $NAME_INDEX \
+    --country_code_index $CODE_INDEX \
     --where "$WHERE" \
     --name $NAME \
     --longitude0 $lng0 \
